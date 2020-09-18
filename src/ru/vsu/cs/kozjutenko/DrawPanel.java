@@ -19,7 +19,7 @@ public class DrawPanel extends JPanel {
         int[] ArrayY = {500, 500, 400, 400};
         Polygon p = new Polygon(ArrayX, ArrayY, 4);
         gr.drawPolygon(p);
-        gr.setColor(new Color(160, 82, 45));
+        gr.setColor(new Color(128, 0, 0));
         gr.fillPolygon(p);
 
         int[] ArrayX1 = {400, 570, 400};
@@ -33,14 +33,9 @@ public class DrawPanel extends JPanel {
         drawSun(gr, 700, 80, 40, 90, 28, Color.yellow);
 
         gr.setColor(Color.BLACK);
+        gr.setFont(new Font("Arial", Font.BOLD, 25));
         gr.drawString("Свобода",200,420);
     }
-
-    //public static void drawText(Graphics2D gr, String string, int font, int x, int y, Color color) {
-       //gr.setColor(color);
-       //font =new Font("Calibri",Font.ITALIC, 10);
-       //gr.setFont(font);
-//}
 
     public static void drawWindows(Graphics2D gr, int x, int y, int width, int height, Color color) {
         gr.setColor(color);
