@@ -26,7 +26,7 @@ public class DrawPanel extends JPanel {
 
     public void drawBasis(Graphics2D gr, int width, int height, Color color, Color colorMast) {
         int[] ArrayX = {(int)(0.25*width), (int) (0.75*width), (int) (0.85*width), (int) (0.15*width)};
-        int[] ArrayY = {500, 500, 400, 400};
+        int[] ArrayY = {(int)(0.85*height), (int)(0.85*height), (int)(0.7*height), (int)(0.7*height)};
         Polygon p = new Polygon(ArrayX, ArrayY, 4);
         gr.drawPolygon(p);
         gr.setColor(color);
