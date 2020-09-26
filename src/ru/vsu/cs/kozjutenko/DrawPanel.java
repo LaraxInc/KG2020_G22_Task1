@@ -8,33 +8,40 @@ public class DrawPanel extends JPanel {
     public void paint(Graphics g) {
         Graphics2D gr = (Graphics2D) g;
         gr.setColor(new Color(135, 206, 235));
-        gr.fillRect(0, 0, 800, 300);
+        gr.fillRect(0, 0, getWidth(), getHeight()/2);
         gr.setColor(new Color(0, 0, 128));
-        gr.fillRect(0, 300, 800, 600);
-        gr.setColor(new Color(160, 82, 45));
-        gr.fillRect(390, 150, 10, 250);
+        gr.fillRect(0, getHeight()/2, getWidth(), getHeight());
 
-
-        int[] ArrayX = {220, 580, 650, 150};
-        int[] ArrayY = {500, 500, 400, 400};
-        Polygon p = new Polygon(ArrayX, ArrayY, 4);
-        gr.drawPolygon(p);
-        gr.setColor(new Color(128, 0, 0));
-        gr.fillPolygon(p);
-
-        int[] ArrayX1 = {400, 570, 400};
-        int[] ArrayY2 = {155, 350, 350};
-        Polygon pl = new Polygon(ArrayX1, ArrayY2, 3);
-        gr.drawPolygon(pl);
-        gr.setColor(new Color(255, 248, 220));
-        gr.fillPolygon(pl);
-
+        gr.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        drawBasis(gr,getWidth(), getHeight(), new Color(128, 0, 0), new Color(160, 82, 45));
+        drawSail(gr, new Color(255, 248, 220));
         drawWindows(gr, 240, 430, 40, 40, Color.white);
         drawSun(gr, 700, 80, 40, 90, 28, Color.yellow);
 
         gr.setColor(Color.BLACK);
         gr.setFont(new Font("Arial", Font.BOLD, 25));
         gr.drawString("Свобода",200,420);
+
+    }
+
+    public void drawBasis(Graphics2D gr, int width, int height, Color color, Color colorMast) {
+        int[] ArrayX = {(int)(0.25*width), (int) (0.75*width), (int) (0.85*width), (int) (0.15*width)};
+        int[] ArrayY = {500, 500, 400, 400};
+        Polygon p = new Polygon(ArrayX, ArrayY, 4);
+        gr.drawPolygon(p);
+        gr.setColor(color);
+        gr.fillPolygon(p);
+        gr.setColor(colorMast);
+        gr.fillRect(390, 150, 10, 250);
+    }
+
+    public static void drawSail(Graphics2D gr, Color color) {
+        int[] ArrayX1 = {400, 570, 400};
+        int[] ArrayY2 = {155, 350, 350};
+        Polygon pl = new Polygon(ArrayX1, ArrayY2, 3);
+        gr.drawPolygon(pl);
+        gr.setColor(color);
+        gr.fillPolygon(pl);
     }
 
     public static void drawWindows(Graphics2D gr, int x, int y, int width, int height, Color color) {
